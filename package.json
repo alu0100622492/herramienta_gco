@@ -1,0 +1,19 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "![alt tag](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif) ===========",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.15.1",
+    "mysql": "^2.10.2",
+    "node": "0.0.0"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}

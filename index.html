@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="./css/nuevo_css.css" media="screen,projection"></link>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <meta charset="UTF-8">
+      <title>Inicio - ShaCar</title>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="div_fondo">     <!--MENU-->
+          <div class="row">
+           <nav id="nav_top" role="navigation">
+            <div id="top" class="nav-wrapper col s12">
+              <a href="index.html" class="brand-logo" title="Voler al inicio"><img class="logo" src="./img/logotipo.png"></img></a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="registrarse.html" title="Ir a Registrarse">Registrarse</a></li>
+                <li><a href="iniciarSesion.html" title="Ir a Iniciar sesión">Iniciar sesión</a></li>
+                <li><a href="como_funciona.html" title="Ir a Como funciona">Cómo funciona</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+    <div class="row">               <!--IMAGENES-->
+      <div class="div_fondo">
+      <div class="slider">
+        <ul class="slides">
+          <li>
+            <img role="img" src="http://media.wsimag.com/attachments/c5036565e9197805ac33e0e515f960af888637cb/store/fill/860/645/d842c09e83588d9ab810d933592bc2abeea0137334bb6139354453c0e08f/Compartir-un-viaje-en-coche-gracias-a-un-sitio-de-internet.jpg"> <!-- random image -->
+            <div class="caption center-align">
+              <p class="text_shadow">Comparte, ahorra, conoce</p>
+            </div>
+          </li>
+          <li>
+            <img role="img" src="https://d1ovtcjitiy70m.cloudfront.net/vi-1/images/search/no-search.jpg"> <!-- random image -->
+            <div id="segunda_transicion" class="caption left-align">
+              <p class="text_shadow">Muévase cómodamente</p>
+              <!--<h5 >Solo elija un destino</h5>-->
+            </div>
+          </li>
+          <li>
+            <img role="img" src="http://cdn2.my-deco-shop.com/design/938-6111-thickbox/about-a-chair-ref-aac21-asiento-tapizado-patas-de-aluminio-hay-muchas-opciones-disponibles-hee-welling-hay.jpg"> <!-- random image -->
+            <div id="tercera_transicion" class="caption right-align">
+              <p class="text_shadow">Vea los posibles conductores</p>
+              <!--<h5>y escoja su preferido</h5>-->
+            </div>
+          </li>
+          <li>
+            <img role="img" src="http://www.shepron.es/blog/wp-content/uploads/2015/11/viajar-en-coche.jpg"> <!-- random image -->
+            <div id="cuarta_transicion" class="caption center-align">
+              <p class="text_shadow">Concrete los detalles</p>
+              <!--<h5>y comience a disfrutar de las ventajas de compartir coche</h5>-->
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row #bbdefb blue lighten-4 z-depth-2">
+    <div class="div_media_pantalla col s3 ">
+      <div id="buscar">
+        <div class="margen">
+          <p role="heading" class="titulo2">Reserve su plaza</p>
+          <form role="form">
+      	    <div class="row">
+      	      <div class="input-field col s10">
+          	    <p class="texto_principal">Escoja su destino</p>
+                <input id="dest" placeholder="La Laguna"  type="text" >
+                </div>
+         		</div>
+
+            <div class="row">
+              <div class="input-field col s10">
+                <p class="texto_principal" >Escoja su fecha</p>
+                <input role="input" type="date" class="datepicker">
+              </div>
+            </div>
+
+            <div class="row">
+              <a role="button" id="boton_buscar" class="waves-effect waves-light btn">Buscar</a>
+            </div>
+          </form>
+        </div>
+       </div>
+    </div>
+
+
+    <div  id="destinos" class="col s9">
+        <div class="tabla #b0bec5 blue-grey lighten-3 z-depth-2">
+          <table class="highlight">
+           <thead>
+             <tr>
+                 <th data-field="name">Destinos más buscados</th>
+             </tr>
+           </thead>
+           <tbody class="#ffffff white">
+             <tr>
+               <td>La Laguna</td>
+             </tr>
+             <tr>
+               <td>Adeje</td>
+             </tr>
+             <tr>
+               <td>Santa Cruz</td>
+             </tr>
+             <tr>
+               <td>Puerto de la Cruz</td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+    </div>
+  </div>
+  </div>
+
+  <footer id="pie" class="page-footer">
+              <div class="row">
+                <div class="col l4 offset-l2 s12">
+
+                  <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Sobre nosotros</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Política de privacidad</a></li>
+                  </ul>
+                </div>
+              </div>
+            <div class="footer-copyright">
+              <div class="container">
+              © 2016 Copyright Text
+              <a class="grey-text text-lighten-4 right" href="#!">@ShacaR.com</a>
+              </div>
+            </div>
+      </footer>
+
+
+
+        	</div>
+        </div>
+    </body>
+    <!--Import jQuery before materialize.js-->
+          <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+          <script type="text/javascript" src="js/materialize.min.js"></script>
+          <script>
+          	$(document).ready(function(){
+          	$('.slider').slider();
+          	$('#textarea1').val('New Text');
+      		$('#textarea1').trigger('autoresize');
+      		$('.datepicker').pickadate({
+        	selectMonths: true, // Creates a dropdown to control month
+        	selectYears: 15 // Creates a dropdown of 15 years to control year
+    		});
+
+          	});
+          	</script>
+  </html>
