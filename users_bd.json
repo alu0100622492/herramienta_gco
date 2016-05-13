@@ -1,0 +1,50 @@
+{
+    "coches": "Usuarios de la aplicacion SHACAR",
+                "car": [
+                    {
+                        "modelo": "Seat Panda",
+                        "nombre": "Carlos",
+                        "apellido": "Rodriguez",
+                        "rutinas": ["S.C - La Laguna (Campus Anchieta)", "La Laguna - Santa Cruz (Plaza España)"],
+                        "otros_viajeros": ["David Hunter","Ana Dominguez"],
+                        "zonas_accion": ["La Laguna","Santa Cruz"],
+                        "valoracion": "***/5",
+                        "opciones":[{
+                          "fumar": ["No"],
+                          "comer": ["Sí"],
+                          "musica":["Si"]
+                        }]
+                    },
+
+                    {
+                        "modelo": "Seat Ibiza",
+                        "nombre": "Lourdes",
+                        "apellido": "Jiménez",
+                        "rutinas": ["S.C - Adeje (Siam mall)","Adeje - Santa Cruz (Plaza España)"],
+                        "otros_viajeros": ["Carla Fernández","Jonás Leitariego"],
+                        "zonas_accion": ["Santa Cruz","Adeje"],
+                        "valoracion": "****/5",
+                        "opciones":[{
+                          "fumar": ["Si"],
+                          "comer": ["Sí"],
+                          "musica":["No"]
+                        }]
+                    },
+
+                     {
+                        "modelo": "Audi A4",
+                        "nombre": "Kevin",
+                        "apellido": "González",
+                        "rutinas": ["La Laguna - Puerto de la Cruz", "Puerto de la Cruz - Los Gigantes","Los Gigantes - El Medano","El Medano - La Laguna"],
+                        "otros_viajeros": ["Carla Fernández","Jonás Leitariego"],
+                        "zonas_accion": ["Santa Cruz","Adeje","Puerto de la Cruz","Los Gigantes","El Medano"],
+                        "valoracion": "**/5",
+                        "opciones":[{
+                          "fumar": ["No"],
+                          "comer": ["No"],
+                          "musica":["Si"]
+                        }]
+                    }
+              ]
+
+}
