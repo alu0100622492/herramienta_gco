@@ -59,7 +59,7 @@ app.get('/consultarbd',function(req,res){
   console.log('Data received from Db: mydbsql:\n');
   console.log(rows);
     for (var i = 0; i <= rows.length; i++) {
-      console.log(rows[i].name);
+      console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
       res.json(rows);
     };
   });
