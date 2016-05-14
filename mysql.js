@@ -10,7 +10,7 @@ var connection = mysql.createConnection({ // Mysql Connection
     host : '127.0.0.1',
     user : 'root',
     password : '',
-    database : 'mydbsql',
+    database : 'mydbsql',//base de datos a la que conecta(nombre workbench)
 });
 
 app.set('views',path.join(__dirname,'views'));
@@ -18,6 +18,10 @@ app.set('view engine','ejs');
 app.use(expressLayouts);
 
 app.use(express.static(__dirname + 'public'));
+console.log('Hola Mundo');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json()); // Body parser use JSON data
+//app.engine('html', require('ejs').renderFile);
 
 // CREATE TABLE usuarios (
 //   id int(11) NOT NULL AUTO_INCREMENT,
@@ -35,45 +39,70 @@ app.use(express.static(__dirname + 'public'));
 // (2, 'Kevin', 'Gonzalez','Adeje','Audi A4','El medano','**/5'),
 // (3, 'Jim', 'Germany'),
 // (4, 'Lesley', 'Scotland');
-
+connection.connect(function(error){
+   if(error){
+      throw error;
+   }else{
+      console.log('Conexion correcta.');
+   }
+});
 
 app.get('/', (req, res) => {
   res.render('index',
   {title : 'Busqueda myapp' })
 });
 
+app.get('/consultarbd',function(req,res){
+  connection.query('SELECT * FROM usuarios',function(err,rows){//tabla creada usuarios y accdemos a la bd y mostramos users
+  if(err) throw err;
 
-
-
-console.log('Hola Mundo');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()); // Body parser use JSON data
-app.get('/prueba',function(req,res){
-	var data = {
-		"Data":"",
-
-	};
-	data["Data"] = "Ejemplo consulta BD mySQL...";
-	res.json(data);
-});
-
-app.get('/usuarios',function(req,res){
-    var data = {
-        "error":1,
-        "Usuarios":""
+  console.log('Data received from Db: mydbsql:\n');
+  console.log(rows);
+    for (var i = 0; i <= rows.length; i++) {
+      console.log(rows[i].name);
+      res.json(rows);
     };
-connection.query("SELECT * from usuarios",function(err, rows, fields){
-        if(rows.length != 0){
-            data["error"] = 0;
-            data["Usuarios"] = rows;
-            res.json(data);
-        }else{
-			console.log(data);
-            data["Usuarios"] = 'No books Found..';
-            res.json(data);
-        }
-    });
+  });
 });
+
+
+//Creating
+// app.get('/crearuser',function(req,res){
+//
+//   var newuser = { name: 'Paco', location: 'El Medano' , coche:'Porsche 911'};
+//   connection.query('INSERT INTO usuarios SET ?', newuser, function(err,res){
+//     if(err) throw err;
+//     console.log('Last insert ID:', res.insertId);
+//     res.json(rows);
+//   });
+// });
+//find
+
+app.get('/busqueda',function(req,res){
+
+  var finduser = { name: 'Pablo', location: 'Santa Cruz' , coche:'Seat Leon'};
+  connection.query('SELECT name FROM usuarios WHERE name = ? AND location = ? ', [ 'Pablo', 'Santa Cruz'], function(err,rows){//finduser
+    if(err) throw err;
+    console.log('Last insert ID:', res.insertId);
+    console.log("Usuario buscado: "+finduser.name+" con coche " + finduser.coche+ " se mueve por la zona " + finduser.location);
+    res.json(rows);
+  });
+});
+
+//actualizar
+
+// app.get('/actualizar',function(req,res){
+//   var newlocation = { location : 'Adeje'};
+// connection.query(
+//   'UPDATE usuarios SET location = ? Where ID = ?',
+//   [newlocation, 1],
+//   function (err, result) {
+//     if (err) throw err;
+//
+//     console.log('Changed ' + result.changedRows + ' rows');
+//   });
+// });
+
 
 http.listen(8080,function(){
 	console.log("Connected & Listen to port 8080");
