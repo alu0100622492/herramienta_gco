@@ -62,7 +62,7 @@ connection.query(
 //destroying
 connection.query(
   'DELETE FROM employees WHERE id = ?',
-  [16],
+  [12,13],
   function (err, result) {
     if (err) throw err;
 
