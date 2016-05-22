@@ -4,7 +4,7 @@
 
 const Datos = (data) => {
     //console.log("dato de datos "+ data);
-    console.log("valor en funcion datos"+data.valor);
+    console.log("valor en funcion datos"+data.value);
 
 };
 

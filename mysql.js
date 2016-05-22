@@ -53,10 +53,6 @@ app.get('/', (req, res) => {
   {title : 'Busqueda myapp' })
 });
 
-app.get('/index', (req, res) => {
-  res.render('index',
-  {title : 'Busqueda myapp' })
-});
 
 app.get('/registrarse', (req, res) => {
   res.render('registrarse',
@@ -79,7 +75,7 @@ app.get('/consultarbd',function(req,res){
   if(err) throw err;
 
   console.log('Data received from Db: mydbsql:\n');
-  console.log(rows);
+  console.log("Rows"+rows);
     for (var i = 0; i <= rows.length; i++) {
       console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
       res.json(rows);
