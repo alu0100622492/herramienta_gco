@@ -6,6 +6,10 @@ var bodyParser = require("body-parser"); // Body parser for fetch posted data
 var path = require('path');
 var expressLayouts = require('express-ejs-layouts');
 //var tablesql = require('./models/mydb.sql');
+//var user = app.models.mydb();
+
+
+
 var connection = mysql.createConnection({ // Mysql Connection
     //host : 'localhost',
     host : '127.0.0.1',
@@ -76,9 +80,11 @@ app.get('/consultarbd',function(req,res){
 
   console.log('Data received from Db: mydbsql:\n');
   console.log("Rows"+rows);
+    var aux;
     for (var i = 0; i <= rows.length; i++) {
       console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
-      res.json(rows);
+      res.json({rows:rows});
+     //res.send({rows:rows});
     };
   });
 });

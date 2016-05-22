@@ -5,6 +5,7 @@
 const Datos = (data) => {
     //console.log("dato de datos "+ data);
     console.log("valor en funcion datos"+data.value);
+    console.log("datarows: "+data.rows);
 
 };
 
@@ -16,7 +17,7 @@ $(document).ready(() => {
     /* Request AJAX para que se calcule la tabla */
     $("#boton_buscar").click( () => {
       //console.log("valor de destino"+destino.value);
-        $.get("/consultarbd", /* Request AJAX para que se calcule la tabla lo devuleve a app*/
+        $.get("/busqueda", /* Request AJAX para que se calcule la tabla lo devuleve a app*/
           //{ input: destino.value },
           Datos,
           'json'
