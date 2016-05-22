@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="./css/nuevo_css.css" media="screen,projection"></link>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <meta charset="UTF-8">
+      <title>Como funciona - SHACAR</title>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="div_fondo">     <!--MENU-->
+          <div class="row">
+           <nav id="nav_top" role="navigation">
+            <div id="top" class="nav-wrapper col s12">
+              <a href="/index" class="brand-logo" title="Voler al inicio"><img class="logo" src="./img/logotipo.png"></img></a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/registrarse" title="Ir a Registrarse">Registrarse</a></li>
+                <li><a href="/iniciarSesion" title="Ir a Iniciar sesión">Iniciar sesión</a></li>
+                <li><a class="pagina_actual z-depth-2" href="/como_funciona" title="Ir a Como funciona">Cómo funciona</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="row card #bbdefb blue lighten-4">
+            <p role="heading" class="titulo ">¿Qué es Shacar?</p>
+            <p class="parrafo"> Shacar es la página a través de la cual los usuarios residentes en Tenerife pueden compartir su coche con otras personas.<br>
+              Ambos usuarios se pondrán de acuerdo sobre la hora de recogida y el trayecto a realizar hablando por el chat de la web o por télefono.<br>
+              Shacar unicamente pone en contacto a los usuarios<br>
+
+              En Shacar distinguimos dos tipos de usuarios(vease en la siguiente tabla):</p>
+
+           <div class="tabla #b0bec5 blue-grey lighten-3 z-depth-2">
+             <table class="highlight">
+              <thead>
+                <tr>
+                    <th data-field="id">Tipo</th>
+                    <th data-field="name">Descripcion</th>
+                </tr>
+              </thead>
+              <tbody class="#ffffff white">
+                <tr>
+                  <td>Chofer</td>
+                  <td>Son los usuarios que además de poder solicitar una plaza para poder viajar con alguien, pueden <br>
+                 	publicar su anuncio para que la gente puede viajar en su vehiculo.</td>
+                </tr>
+                <tr>
+                  <td>Pasajeros</td>
+                  <td>Son aquellos usuarios que únicamente podrán solicitar plaza para poder viajar en un vehículo.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="parrafo"> Además, los usuarios al registrarse estarán obligados a cumplir con las siguientes normas. <br></p>
+
+
+
+    <div class="tabla #b0bec5 blue-grey lighten-3 z-depth-2">
+      <table class="highlight">
+       <thead>
+         <tr>
+             <th role="heading" class="titulo" data-field="id">Normas para usuarios de Shacar</th>
+         </tr>
+       </thead>
+       <tbody class="#ffffff white">
+         <tr>
+           <td>Una vez seleccionado el vehiculo con el que se desea viajar, solo se podrá cancelar hasta 3 días antes de realizar el trayecto.</td>
+         </tr>
+           <td>Si el chófer no puede realizar el trayecto previsto y no ha cancelado el viaje con 5 días de antelación se le penalizará con un <br>
+      periodo de inactivadad para transportar pasajeros.</td>
+         </tr>
+            <td>Se ha de ser mayor de edad para registrarse.</td>
+         <tr>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+ </div>
+
+
+
+</div>
+  <footer id="pie" class="page-footer">
+              <div class="row">
+                <div class="col l4 offset-l2 s12">
+
+                  <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Sobre nosotros</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Política de privacidad</a></li>
+                  </ul>
+                </div>
+              </div>
+            <div class="footer-copyright">
+              <div class="container">
+              © 2016 Copyright Text
+              <a class="grey-text text-lighten-4 right" href="#!">@ShacaR.com</a>
+              </div>
+            </div>
+      </footer>
+
+
+
+      </div>
+    </body>
+    <!--Import jQuery before materialize.js-->
+          <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+          <script type="text/javascript" src="js/materialize.min.js"></script>
+          <script>
+          	$(document).ready(function(){
+          	$('.slider').slider();
+          	$('#textarea1').val('New Text');
+      		$('#textarea1').trigger('autoresize');
+      		$('.datepicker').pickadate({
+        	selectMonths: true, // Creates a dropdown to control month
+        	selectYears: 15 // Creates a dropdown of 15 years to control year
+    		});
+
+          	});
+          	</script>
+  </html>

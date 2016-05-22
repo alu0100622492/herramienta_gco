@@ -5,6 +5,7 @@ var mysql = require('mysql'); // Mysql include
 var bodyParser = require("body-parser"); // Body parser for fetch posted data
 var path = require('path');
 var expressLayouts = require('express-ejs-layouts');
+//var tablesql = require('./models/mydb.sql');
 var connection = mysql.createConnection({ // Mysql Connection
     //host : 'localhost',
     host : '127.0.0.1',
@@ -17,7 +18,7 @@ app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 app.use(expressLayouts);
 
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(__dirname + '/public'));
 console.log('Hola Mundo');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // Body parser use JSON data
@@ -52,7 +53,28 @@ app.get('/', (req, res) => {
   {title : 'Busqueda myapp' })
 });
 
+app.get('/index', (req, res) => {
+  res.render('index',
+  {title : 'Busqueda myapp' })
+});
+
+app.get('/registrarse', (req, res) => {
+  res.render('registrarse',
+  {title : 'Registrarse myapp' })
+});
+
+app.get('/iniciarSesion', (req, res) => {
+  res.render('iniciarSesion',
+  {title : 'iniciarSesion myapp' })
+});
+
+app.get('/como_funciona', (req, res) => {
+  res.render('como_funciona',
+  {title : 'Como funciona myapp' })
+});
+
 app.get('/consultarbd',function(req,res){
+  console.log("Estamos en consultarbd");
   connection.query('SELECT * FROM usuarios',function(err,rows){//tabla creada usuarios y accdemos a la bd y mostramos users
   if(err) throw err;
 
