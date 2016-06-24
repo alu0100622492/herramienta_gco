@@ -24,44 +24,44 @@
             <div id="top" class="nav-wrapper col s12">
               <a href="/" class="brand-logo" title="Voler al inicio"><img class="logo" src="./img/logotipo.png"></img></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a class="pagina_actual z-depth-2" href="/registrarse" title="Ir a Registrarse">Registrarse</a></li>
-                <li><a href="/iniciarSesion" title="Ir a Iniciar sesión">Iniciar sesión</a></li>
-                <li><a href="/como_funciona" title="Ir a Como funciona">Cómo funciona</a></li>
+                <li><a class="pagina_actual z-depth-2" href="/registrarse" title="Ir a Registrarse" tabindex="0">Registrarse</a></li>
+                <li><a href="/iniciarSesion" title="Ir a Iniciar sesión" tabindex="0">Iniciar sesión</a></li>
+                <li><a href="/como_funciona" title="Ir a Como funciona" tabindex="0">Cómo funciona</a></li>
               </ul>
             </div>
           </nav>
         </div>
         <div class="row">
         <div class="card #bbdefb blue lighten-4">
-          <p class="titulo">Registrarse</p>
+          <p class="titulo" tabindex="0">Registrarse</p>
             <div class="row">
               <div class="col s6" id="formulario_inicio">
                 <div class="margen"><!-- div para dar margen-->
                   <form role="form">
                     <div class="row">
                       <div class="input-field col s12">
-          	             <p>Nombre de usuario o correo electrónico.</p>
+          	             <p tabindex="0">Nombre de usuario o correo electrónico.</p>
                          <input role="input" id="dest" placeholder="ejemplo@ejemplo.es"  type="text" >
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col s12">
-            	           <p>Contraseña.</p>
+            	           <p tabindex="0">Contraseña.</p>
                          <input role="input" id="dest" placeholder="tu contraseña"  type="text" >
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col s12">
-                         <p>Repita la contraseña.</p>
+                         <p tabindex="0">Repita la contraseña.</p>
                          <input role="input" id="dest" placeholder="tu contraseña"  type="text" >
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col s6 offset-s3">
-                        <button role="button" id="botonEnviar" class="btn waves-effect waves-light" type="submit" name="action" title="Haga click para registrarse">Registrarse
+                        <button role="button" id="botonEnviar" class="btn waves-effect waves-light" type="submit" tabindex="0" name="action" title="Haga click para registrarse">Registrarse
                           <i class="material-icons right">send</i>
                         </button>
                       </div>
@@ -70,7 +70,7 @@
                 </div>
               </div>
               <div class="col s6">
-                <img id="imagen_registro" role="img" src="./img/registro.png" alt="Imagen de registro">
+                <img id="imagen_registro" role="img" src="./img/registro.png" tabindex="0" alt="Imagen de registro">
               </div>
             </div>
           </div>
@@ -81,8 +81,7 @@
           <div class="row">
             <div class="col l4 offset-l2 s12">
               <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Sobre nosotros</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Política de privacidad</a></li>
+                <li><a class="grey-text text-lighten-3" href="/sobreNos" title="Informacion Adicional" tabindex="0">Sobre nosotros</a></li>
               </ul>
             </div>
           </div>

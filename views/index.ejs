@@ -22,9 +22,9 @@
             <div id="top" class="nav-wrapper col s12">
               <a href="/index" class="brand-logo" title="Voler al inicio"><img class="logo" src="./img/logotipo.png"></img></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/registrarse" title="Ir a Registrarse">Registrarse</a></li>
-                <li><a href="/iniciarSesion" title="Ir a Iniciar sesión">Iniciar sesión</a></li>
-                <li><a href="/como_funciona" title="Ir a Como funciona">Cómo funciona</a></li>
+                <li><a href="/registrarse" title="Ir a Registrarse" tabindex="0">Registrarse</a></li>
+                <li><a href="/iniciarSesion" title="Ir a Iniciar sesión" tabindex="0">Iniciar sesión</a></li>
+                <li><a href="/como_funciona" title="Ir a Como funciona" tabindex="0">Cómo funciona</a></li>
               </ul>
             </div>
           </nav>
@@ -70,24 +70,24 @@
     <div class="div_media_pantalla col s3 ">
       <div id="buscar">
         <div class="margen">
-          <p role="heading" class="titulo2">Reserve su plaza</p>
+          <p role="heading" class="titulo2" tabindex="0">Reserve su plaza</p>
           <form role="form">
             <div class="row">
               <div class="input-field col s10">
-                <p class="texto_principal">Escoja su destino</p>
+                <p class="texto_principal" tabindex="0">Escoja su destino</p>
                 <input id="dest" placeholder="La Laguna"  type="text" >
                 </div>
             </div>
 
             <div class="row">
               <div class="input-field col s10">
-                <p class="texto_principal" >Escoja su fecha</p>
+                <p class="texto_principal" tabindex="0">Escoja su fecha</p>
                 <input role="input" type="date" class="datepicker">
               </div>
             </div>
 
             <div class="row">
-              <button role="button" id="boton_buscar" class="waves-effect waves-light btn">Buscar</button>
+              <button role="button" id="boton_buscar" class="waves-effect waves-light btn" tabindex="0">Buscar</button>
             </div>
           </form>
         </div>
@@ -100,7 +100,7 @@
           <table class="highlight">
            <thead>
              <tr>
-                 <th data-field="name">Destinos más buscados</th>
+                 <th data-field="name" tabindex="0">Destinos más buscados</th>
              </tr>
            </thead>
            <tbody class="#ffffff white">
@@ -128,8 +128,7 @@
                 <div class="col l4 offset-l2 s12">
 
                   <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Sobre nosotros</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Política de privacidad</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/sobreNos" title="Informacion Adicional" tabindex="0">Sobre nosotros</a></li>
                   </ul>
                 </div>
               </div>

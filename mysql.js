@@ -75,6 +75,11 @@ app.get('/como_funciona', (req, res) => {
   {title : 'Como funciona myapp' })
 });
 
+app.get('/sobreNos', (req, res) => {
+  res.render('sobreNos',
+  {title: 'Información sobre nosotros'})
+});
+
 app.get('/consultarbd',function(req,res,next){
   console.log("Estamos en consultarbd");
   connection.query('SELECT * FROM usuarios',function(err,rows){//tabla creada usuarios y accdemos a la bd y mostramos users

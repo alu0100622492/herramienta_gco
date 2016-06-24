@@ -24,37 +24,37 @@
             <div id="top" class="nav-wrapper col s12">
               <a href="/" class="brand-logo" title="Voler al inicio"><img class="logo" src="./img/logotipo.png"></img></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/registrarse" title="Ir a Registrarse">Registrarse</a></li>
-                <li><a class="pagina_actual z-depth-2" href="/iniciarSesion" title="Ir a Iniciar sesión">Iniciar sesión</a></li>
-                <li><a href="/como_funciona" title="Ir a Como funciona">Cómo funciona</a></li>
+                <li><a href="/registrarse" title="Ir a Registrarse" tabindex="0">Registrarse</a></li>
+                <li><a class="pagina_actual z-depth-2" href="/iniciarSesion" title="Ir a Iniciar sesión" tabindex="0">Iniciar sesión</a></li>
+                <li><a href="/como_funciona" title="Ir a Como funciona" tabindex="0">Cómo funciona</a></li>
               </ul>
             </div>
           </nav>
         </div>
         <div class="row">
         <div class="card #bbdefb blue lighten-4">
-          <p role="heading" class="titulo">Iniciar Sesión</p>
+          <p role="heading" class="titulo" tabindex="0">Iniciar Sesión</p>
             <div class="row">
               <div class="col s6" id="formulario_inicio">
                 <div class="margen"><!-- div para dar margen-->
                   <form role="form">
                     <div class="row">
                       <div class="input-field col s12">
-          	             <p>Nombre de usuario o correo electrónico.</p>
+          	             <p tabindex="0">Nombre de usuario o correo electrónico.</p>
                          <input role="input" id="dest" placeholder="ejemplo@ejemplo.es"  type="text" aria-required=”true”>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col s12">
-            	           <p>Contraseña.</p>
+            	           <p tabindex="0">Contraseña.</p>
                          <input role="input" id="dest" placeholder="tu contraseña"  type="text" aria-required=”true”>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col s6 offset-s3">
-                        <button role="button" id="botonEnviar" class="btn waves-effect waves-light" type="submit" name="action" title="Haga click para iniciar sesión">Iniciar sesión
-                          <i class="material-icons right">send</i>
+                        <button role="button" id="botonEnviar" class="btn waves-effect waves-light" tabindex="0" type="submit" name="action" title="Haga click para iniciar sesión">Iniciar sesión
+                          <i class="material-icons right" tabindex="0">send</i>
                         </button>
                       </div>
                     </div>
@@ -62,7 +62,7 @@
                 </div>
               </div>
               <div class="col s6">
-                <img id="imagen_usuario" role="img" src="./img/user.png" alt="Imagen de usuario">
+                <img id="imagen_usuario" role="img" src="./img/user.png" tabindex="0" alt="Imagen de usuario">
               </div>
             </div>
           </div>
@@ -73,8 +73,7 @@
           <div class="row">
             <div class="col l4 offset-l2 s12">
               <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Sobre nosotros</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Política de privacidad</a></li>
+                <li><a class="grey-text text-lighten-3" href="/sobreNos" title="Informacion Adicional" tabindex="0">Sobre nosotros</a></li>
               </ul>
             </div>
           </div>
