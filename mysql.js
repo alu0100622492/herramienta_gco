@@ -13,9 +13,10 @@ var expressLayouts = require('express-ejs-layouts');
 var connection = mysql.createConnection({ // Mysql Connection
     //host : 'localhost',
     host : '127.0.0.1',
+    port : '8080',
     user : 'root',
-    password : '',
-    database : 'mydbsql',//base de datos a la que conecta(nombre workbench)
+    password : 'root',
+    database : 'mysql-conect',//base de datos a la que conecta(nombre workbench)
 });
 
 app.set('views',path.join(__dirname,'views'));
@@ -46,6 +47,7 @@ app.use(bodyParser.json()); // Body parser use JSON data
 // (4, 'Lesley', 'Scotland');
 connection.connect(function(error){
    if(error){
+     console.log(error);
       throw error;
    }else{
       console.log('Conexion correcta.');
@@ -73,7 +75,7 @@ app.get('/como_funciona', (req, res) => {
   {title : 'Como funciona myapp' })
 });
 
-app.get('/consultarbd',function(req,res){
+app.get('/consultarbd',function(req,res,next){
   console.log("Estamos en consultarbd");
   connection.query('SELECT * FROM usuarios',function(err,rows){//tabla creada usuarios y accdemos a la bd y mostramos users
   if(err) throw err;
@@ -84,6 +86,7 @@ app.get('/consultarbd',function(req,res){
     for (var i = 0; i <= rows.length; i++) {
       console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
       res.json({rows:rows});
+      return next();
      //res.send({rows:rows});
     };
   });
@@ -102,7 +105,7 @@ app.get('/consultarbd',function(req,res){
 // });
 //find
 
-app.get('/busqueda',function(req,res){
+app.get('/busqueda',function(req,res,next){
 
   var finduser = { name: 'Pablo', location: 'Santa Cruz' , coche:'Seat Leon'};
   connection.query('SELECT name FROM usuarios WHERE name = ? AND location = ? ', [ 'Pablo', 'Santa Cruz'], function(err,rows){//finduser
@@ -110,6 +113,7 @@ app.get('/busqueda',function(req,res){
     console.log('Last insert ID:', res.insertId);
     console.log("Usuario buscado: "+finduser.name+" con coche " + finduser.coche+ " se mueve por la zona " + finduser.location);
     res.json(rows);
+    return next();
   });
 });
 
