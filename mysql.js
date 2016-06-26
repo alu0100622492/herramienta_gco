@@ -7,16 +7,19 @@ var path = require('path');
 var expressLayouts = require('express-ejs-layouts');
 //var tablesql = require('./models/mydb.sql');
 //var user = app.models.mydb();
-
-
+app.set('port', (process.env.PORT || 8080));
 
 var connection = mysql.createConnection({ // Mysql Connection
-    //host : 'localhost',
-    host : '127.0.0.1',
-    port : '8080',
-    user : 'root',
-    password : 'root',
-    database : 'mysql-conect',//base de datos a la que conecta(nombre workbench)
+    // //host : 'localhost',
+    // host : '127.0.0.1',
+    // port : '8080',
+    // user : 'alu0100836059',
+    // password : '',
+    // database : 'dbsql',//base de datos a la que conecta(nombre workbench)
+    host : process.env.IP,/*'localhost',*/
+    user : process.env.C9_USER,/*'root',*/
+    password : '',
+    database : 'c9'
 });
 
 app.set('views',path.join(__dirname,'views'));
@@ -55,7 +58,7 @@ connection.connect(function(error){
 });
 
 app.get('/', (req, res) => {
-  res.render('index',
+  res.render('iniciarSesion',
   {title : 'Busqueda myapp' })
 });
 
@@ -63,6 +66,11 @@ app.get('/', (req, res) => {
 app.get('/registrarse', (req, res) => {
   res.render('registrarse',
   {title : 'Registrarse myapp' })
+});
+
+app.get('/index', (req, res) => {
+  res.render('index',
+  {title : 'iniciar myapp' })
 });
 
 app.get('/iniciarSesion', (req, res) => {
@@ -137,6 +145,10 @@ app.get('/busqueda',function(req,res,next){
 // });
 
 
-http.listen(8080,function(){
-	console.log("Connected & Listen to port 8080");
+// http.listen(8080,function(){
+// 	console.log("Connected & Listen to port 8080");
+// });
+
+app.listen(app.get('port'), () => {
+    console.log(`Node mysql is running at localhost: ${app.get('port')}` );
 });

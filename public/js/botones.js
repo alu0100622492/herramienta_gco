@@ -12,17 +12,24 @@ const Datos = (data) => {
 
 
 $(document).ready(() => {
-    console.log("estamos en botones");
+    
 
-    /* Request AJAX para que se calcule la tabla */
-    $("#boton_buscar").click( () => {
+  //   /* Request AJAX para que se calcule la tabla */
+  //   $("#boton_buscar").click( () => {
+  //     console.log("estamos en buscar");
+  //     //console.log("valor de destino"+destino.value);
+  //       $.get("/consultarbd", /* Request AJAX para que se calcule la tabla lo devuleve a app*/
+  //         //{ input: destino.value },
+  //         Datos,
+  //         'json'
+  //       );
+  // });
+
+ $("#boton_buscar").click( () => {
+      console.log("estamos en buscar");
       //console.log("valor de destino"+destino.value);
-        $.get("/consultarbd", /* Request AJAX para que se calcule la tabla lo devuleve a app*/
-          //{ input: destino.value },
-          Datos,
-          'json'
-        );
+        $.get("/consultarbd",'json');
    });
- });
 
+ });
 })();
