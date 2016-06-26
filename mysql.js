@@ -32,22 +32,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // Body parser use JSON data
 //app.engine('html', require('ejs').renderFile);
 
-// CREATE TABLE usuarios (
-//   id int(11) NOT NULL AUTO_INCREMENT,
-//   name varchar(50),
-//     apellidos varchar(50),
-//   location varchar(50),
-//     modelo varchar(50),
-//     zonas_accion varchar(50),
-//     valoracion varchar(50),
-//   PRIMARY KEY (id)
-// ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-//
-// INSERT INTO employees (id, name, apellidos,location,modelo,zonas_accion,valoracion) VALUES
-// (1, 'Carlos','Rodriguez' ,'Santa Cruz','Seat Panda','La Laguna','***/5'),
-// (2, 'Kevin', 'Gonzalez','Adeje','Audi A4','El medano','**/5'),
-// (3, 'Jim', 'Germany'),
-// (4, 'Lesley', 'Scotland');
 connection.connect(function(error){
    if(error){
      console.log(error);
@@ -68,7 +52,7 @@ app.get('/registrarse', (req, res) => {
   {title : 'Registrarse myapp' })
 });
 
-app.get('/index', (req, res) => {
+app.get('/principal', (req, res) => {
   res.render('index',
   {title : 'iniciar myapp' })
 });
@@ -96,15 +80,49 @@ app.get('/consultarbd',function(req,res,next){
   console.log('Data received from Db: mydbsql:\n');
   console.log("Rows"+rows);
     var aux;
-    for (var i = 0; i <= rows.length; i++) {
+    for (var i = 0; i < rows.length; i++) {
       console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
-      res.json({rows:rows});
+    }
+    for (var i = 0; i < rows.length; i++) {
+      console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
+      res.jsonp({rows:rows});
       return next();
      //res.send({rows:rows});
     };
   });
 });
 
+
+app.get('/users',function(req,res,next){
+  console.log("Estamos en users");
+  connection.query('SELECT * FROM usuarios',function(err,rows){//tabla creada usuarios y accdemos a la bd y mostramos users
+  if(err) throw err;
+  
+   console.log("Rows"+rows);
+   console.log("numero users en la BDD"+rows.length);
+   
+    for (var i = 0; i < rows.length; i++) {
+      console.log("Usuario "+i+" : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
+    }
+  
+ 
+  //res.jsonp({user:rows});
+  //res.send(req.rows);
+  //res.send({rows:rows});
+  res.json({rows:rows});
+  
+  //   var aux;
+  //   for (var i = 0; i <= rows.length; i++) {
+  //     console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
+  //   }
+  //   for (var i = 0; i <= rows.length; i++) {
+  //     console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
+  //     res.jsonp({rows:rows});
+  //     return next();
+  //   //res.send({rows:rows});
+  //   };
+   });
+});
 
 //Creating
 // app.get('/crearuser',function(req,res){
@@ -116,8 +134,36 @@ app.get('/consultarbd',function(req,res,next){
 //     res.json(rows);
 //   });
 // });
-//find
 
+
+//Creating
+app.get('/registro',function(req,res){
+  console.log("valor del nombre en registrarse: "+ req.query.name);
+  console.log("valor del modelo en registrarse: "+ req.query.modelo);
+  console.log("valor de localizacion en registrarse: "+ req.query.localitation);
+  
+  var newuser = { name: req.query.name, location: req.query.localitation , coche:req.query.modelo};
+    connection.query('INSERT INTO usuarios SET ?', newuser, function(err,rows){
+    if(err) throw err;
+    console.log('Last insert ID:', res.insertId);
+    //res.render('index',{title:'Bienvenido'});
+    res.redirect('index',{title:'Bienvenido'});
+    //res.redirect('principal');
+    //res.json(rows);
+  });
+  
+  //res.render('index',{title:'Bienvenido'});
+  //res.redirect('index',{title:'Bienvenido'});
+  // var newuser = { name: 'Paco', location: 'El Medano' , coche:'Porsche 911'};
+  // connection.query('INSERT INTO usuarios SET ?', newuser, function(err,res){
+  //   if(err) throw err;
+  //   console.log('Last insert ID:', res.insertId);
+  //   res.json(rows);
+  // });
+});
+
+
+//find
 app.get('/busqueda',function(req,res,next){
 
   var finduser = { name: 'Pablo', location: 'Santa Cruz' , coche:'Seat Leon'};
@@ -125,6 +171,20 @@ app.get('/busqueda',function(req,res,next){
     if(err) throw err;
     console.log('Last insert ID:', res.insertId);
     console.log("Usuario buscado: "+finduser.name+" con coche " + finduser.coche+ " se mueve por la zona " + finduser.location);
+    res.json(rows);
+    return next();
+  });
+});
+
+
+
+//find
+app.get('/buscar_destino',function(req,res,next){
+  console.log("Localizacion en buscar destino "+req.query.localitation);
+  var findlocalitation = {  location: req.query.localitation };
+  connection.query('SELECT * FROM usuarios WHERE location = ? ', [req.query.localitation], function(err,rows){//findestino
+    if(err) throw err;
+    console.log("Usuario buscado: "+rows.name+" con coche " + rows.coche+ " se mueve por la zona " + rows.location);
     res.json(rows);
     return next();
   });
