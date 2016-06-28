@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html>
+  <html lang="es">
     <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -37,23 +37,31 @@
             <div class="row">
               <div class="col s6" id="formulario_inicio">
                 <div class="margen"><!-- div para dar margen-->
-                  <form role="form">
+                  <form role="form" action="/inicio" method="get">
+                    
                     <div class="row">
                       <div class="input-field col s12">
-          	             <p tabindex="0">Nombre de usuario o correo electrónico.</p>
-                         <input role="input" id="dest" placeholder="ejemplo@ejemplo.es"  type="text" aria-required=”true”>
+          	             <p tabindex="0">Nombre de usuario .</p>
+                         <input role="input" id="name_user1" placeholder="E.j: Su Nombre"  type="text" required>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="input-field col s12">
+          	             <p tabindex="0">Correo electrónico.</p>
+                         <input role="input" id="correo" placeholder="E.j: ejemplo@ejemplo.es"  type="text" onchange="validar_email();" required>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col s12">
             	           <p tabindex="0">Contraseña.</p>
-                         <input role="input" id="dest" placeholder="tu contraseña"  type="text" aria-required=”true”>
+                         <input role="input" id="pass" placeholder="E.j: Su contraseña"  type="password" required>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col s6 offset-s3">
-                        <button role="button" id="botonEnviar" class="btn waves-effect waves-light" tabindex="0" type="submit" name="action" title="Haga click para iniciar sesión">Iniciar sesión
+                        <button role="button" id="botoniniciar" class="btn waves-effect waves-light" tabindex="0" type="submit" name="action" title="Haga click para iniciar sesión">Iniciar sesión
                           <i class="material-icons right" tabindex="0">send</i>
                         </button>
                       </div>

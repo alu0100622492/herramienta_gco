@@ -1,39 +1,49 @@
 // See http://en.wikipedia.org/wiki/Comma-separated_values
-(() => {
+((exports) => {
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
 
-const buscfactTemplate = `
-     
-      <%var i = 1%>
-      <% _.each(it, (fact) => { %>
-      
-      <nav class="carrito_fact">
-      <h4>Factura numero : <%=i%>  ,Correspondiente a: <%=name%></h4>
-      <textarea cols="95" rows="5"><%=fact.factura %>sadadd</textarea>
-      <!--h4>Con un importe de: <%=total%>€</h4-->
-      <%++i%>
-      </nav>
-      <%});%>
-      
-`;
-
-const errorTemplate = `
-      <nav class="carrito_fact">
-      <h2><%=error%></h2>
-      </nav>
-`;
+function validar_email( ) {
+    var x = document.getElementById("correo").value;
+    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if ( !expr.test(x) )
+        alert("Error: La dirección de correo " + x + " es incorrecta.");
+}
 
 
-const Datos = (data) => {
-    //console.log("dato de datos "+ data);
-    console.log("valor en funcion datos"+data.value);
-    console.log("datarows: "+data.rows);
-  if(!data.error){
-     $("#prueba").html(_.template(buscfactTemplate, {it:data.factura,name:data.name, fact: data.factura[0].factura,total :data.factura[0].total }));
-    }else{
-        $("#prueba").html(_.template(errorTemplate, {error:data.error}));
-       // $("#prueba").html(_.template(resultTemplate, {name:data.name, fact: data.factura,total:data.total }));
+const Datos = (contenido) => {
+    console.log("LONGITUD "+ contenido.num_elem);
+    console.log("Valor de DATA DATOS "+ contenido);
+    console.log("valor de localizacion en 0"+contenido.todo[0].name);
+    
+    $("#titleprueba1").width('70%').append(
+							"<div>"
+						 +"<table >"
+                            +"<tr>"
+                            +"<td>"+"<B>Chofer</B>"+"</td>"
+                            +"<td>"+"<B>Vehiculo</B>"+"</td>"
+                            +"<td>"+"<B>ZONA</B>"+"</td>"
+                            +"</tr>"
+                         +"</table>"
+                         +"</div>"
+				 		);
+    
+    for( var i=0; i < contenido.num_elem; i++){
+        if(!contenido.todo[i].coche)
+        contenido.todo[i].coche="Sin coche";
+					$("#prueba").width('70%').append(
+							"<div>"
+						 +"<table>"
+                            +"<tr>"
+                            +"<td>"+contenido.todo[i].name+"</td>"
+                            +"<td>"+contenido.todo[i].coche+"</td>"
+                            +"<td>"+ contenido.todo[i].location+"</td>"
+                            +"</tr>"
+                         +"</table>"
+                         +"</div>"
+				 		);
+			 
     }
+
 };
 
 
@@ -41,36 +51,27 @@ const Datos = (data) => {
 $(document).ready(() => {
     
   
-  //   /* Request AJAX para que se calcule la tabla */
-  //   $("#boton_buscar").click( () => {
-  //     console.log("estamos en buscar");
-  //     //console.log("valor de destino"+destino.value);
-  //       $.get("/consultarbd", /* Request AJAX para que se calcule la tabla lo devuleve a app*/
-  //         //{ input: destino.value },
-  //         Datos,
-  //         'json'
-  //       );
-  // });
   
-  
-  $("#boton_buscar").click( () => {
-      console.log("estamos en buscar"+destino_index.value);
-      //console.log("valor de destino"+destino.value);
-       $.get('/buscar_destino',
-        {
-          localitation: destino_index.value
+  $("#botoniniciar").click( () => {
+      
+      console.log("Valor del nombre"+name_user1.value);
+      console.log("Valor del destino"+correo.value);
+      console.log("Valor del modelo"+pass.value);
+      if(!name_user1.value){
+          console.log("Sin valor");
+      }else{
+      $.get('/inicio',
+        {   name:name_user1.value,
+            correo:correo.value,
+            pass: pass.value
         },
         'json'
       );
-  });
-
-// $("#boton_buscar").click( () => {
-//       console.log("estamos en buscar");
-//       //console.log("valor de destino"+destino.value);
-//         $.get("/users",Datos,'json');
-//   });
+      }
+   });
+  
    
-   
+   //boton registrarse
    $("#botonEnviar").click( () => {
       console.log("estamos en boton enviar de registrarse");
       console.log("Valor del nombre"+name_user.value);
@@ -86,6 +87,21 @@ $(document).ready(() => {
       );
    });
    
+   //boton buscar y generar tabla
+   $("#boton_buscar").click( () => {
+      console.log("estamos en buscar"+destino_index.value);
+      //console.log("valor de destino"+destino.value);
+       $.get('/buscar_destino',
+        {
+          localitation: destino_index.value
+        },
+        Datos,
+        'json'
+      );
+  });
+
+   
 
  });
-})();
+ exports.validar_email=validar_email;
+})(this);

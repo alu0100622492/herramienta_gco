@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html>
+  <html lang="es">
     <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -20,7 +20,7 @@
           <div class="row">
            <nav id="nav_top" role="navigation">
             <div id="top" class="nav-wrapper col s12">
-              <a href="/index" class="brand-logo" title="Voler al inicio"><img class="logo" src="./img/logotipo.png"></img></a>
+              <a href="/principal" class="brand-logo" title="Voler al inicio"><img class="logo" src="./img/logotipo.png"></img></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/registrarse" title="Ir a Registrarse" tabindex="0">Registrarse</a></li>
                 <li><a href="/iniciarSesion" title="Ir a Iniciar sesión" tabindex="0">Iniciar sesión</a></li>
@@ -75,21 +75,22 @@
             <div class="row">
               <div class="input-field col s10">
                 <p class="texto_principal" tabindex="0">Escoja su destino</p>
-                <input id="destino_index" placeholder="La Laguna"  type="text" >
+                <input id="destino_index" placeholder="E.j: La Laguna"  type="text" required>
                 </div>
             </div>
 
             <div class="row">
               <div class="input-field col s10">
                 <p class="texto_principal" tabindex="0">Escoja su fecha</p>
-                <input role="input" type="date" class="datepicker">
+                <input role="input" id="fecha" type="date" class="datepicker" placeholder=" - ">
               </div>
             </div>
 
             <div class="row">
-              <button role="button" id="boton_buscar" class="waves-effect waves-light btn" tabindex="0">Buscar</button>
+              <!--button role="button" id="boton_buscar" class="waves-effect waves-light btn" tabindex="0">Buscar</button-->
             </div>
           </form>
+          <input id="boton_buscar" name="boton_buscar" type="submit" value="Buscar" class="waves-effect waves-light btn">
         </div>
        </div>
     </div>
@@ -119,9 +120,9 @@
            </tbody>
          </table>
        </div>
+       <div id="titleprueba1" class="titleprueba1"></div>
        <div id="prueba" class="prueba"></div>
     </div>
-  </div>
   </div>
 
   <footer id="pie" class="page-footer">

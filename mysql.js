@@ -72,6 +72,8 @@ app.get('/sobreNos', (req, res) => {
   {title: 'Información sobre nosotros'})
 });
 
+//Donde podemos ver todos los usuarios
+
 app.get('/consultarbd',function(req,res,next){
   console.log("Estamos en consultarbd");
   connection.query('SELECT * FROM usuarios',function(err,rows){//tabla creada usuarios y accdemos a la bd y mostramos users
@@ -93,83 +95,63 @@ app.get('/consultarbd',function(req,res,next){
 });
 
 
-app.get('/users',function(req,res,next){
-  console.log("Estamos en users");
-  connection.query('SELECT * FROM usuarios',function(err,rows){//tabla creada usuarios y accdemos a la bd y mostramos users
-  if(err) throw err;
+
+
+//Iniciar Sesion
+app.get('/inicio',function(req,res){
+  console.log("Localizacion en inicio nombre "+req.query.name);
+  console.log("Localizacion en inicio correo "+req.query.correo);
+  console.log("Localizacion en inicio pass "+req.query.pass);
+  var nombre = req.query.name;
   
-   console.log("Rows"+rows);
-   console.log("numero users en la BDD"+rows.length);
-   
-    for (var i = 0; i < rows.length; i++) {
-      console.log("Usuario "+i+" : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
-    }
-  
- 
-  //res.jsonp({user:rows});
-  //res.send(req.rows);
-  //res.send({rows:rows});
-  res.json({rows:rows});
-  
-  //   var aux;
-  //   for (var i = 0; i <= rows.length; i++) {
-  //     console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
-  //   }
-  //   for (var i = 0; i <= rows.length; i++) {
-  //     console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
-  //     res.jsonp({rows:rows});
-  //     return next();
-  //   //res.send({rows:rows});
-  //   };
-   });
+  if(!nombre){
+       console.log("El user NO EXISTE IIIFFF else");
+       
+  }else{
+       console.log("EN EL ELSE")
+       connection.query('SELECT * FROM usuarios WHERE name = ? ', [nombre], function(err,rows){//findestino
+                if(err) throw err;
+    
+          console.log("Longitud de rows"+rows.length);
+                if(rows.length > 0){
+                    console.log("El usuario existe y es"+rows[0].name);
+                    res.render('index',{title:'Bienvenido'});
+                }else{
+                    console.log("El user NO EXISTE");
+                    res.render('registrarse',{title:'Registrese'});
+                }
+       });
+  }
 });
 
-//Creating
-// app.get('/crearuser',function(req,res){
-//
-//   var newuser = { name: 'Paco', location: 'El Medano' , coche:'Porsche 911'};
-//   connection.query('INSERT INTO usuarios SET ?', newuser, function(err,res){
-//     if(err) throw err;
-//     console.log('Last insert ID:', res.insertId);
-//     res.json(rows);
-//   });
-// });
 
-
-//Creating
-app.get('/registro',function(req,res){
+//Registro
+app.get('/registro',function(req,res,next){
   console.log("valor del nombre en registrarse: "+ req.query.name);
   console.log("valor del modelo en registrarse: "+ req.query.modelo);
   console.log("valor de localizacion en registrarse: "+ req.query.localitation);
-  
+  if(!req.query.name){
+    console.log("No hay valores");
+  }else{
   var newuser = { name: req.query.name, location: req.query.localitation , coche:req.query.modelo};
     connection.query('INSERT INTO usuarios SET ?', newuser, function(err,rows){
     if(err) throw err;
-    console.log('Last insert ID:', res.insertId);
-    //res.render('index',{title:'Bienvenido'});
-    res.redirect('index',{title:'Bienvenido'});
-    //res.redirect('principal');
-    //res.json(rows);
-  });
-  
-  //res.render('index',{title:'Bienvenido'});
-  //res.redirect('index',{title:'Bienvenido'});
-  // var newuser = { name: 'Paco', location: 'El Medano' , coche:'Porsche 911'};
-  // connection.query('INSERT INTO usuarios SET ?', newuser, function(err,res){
-  //   if(err) throw err;
-  //   console.log('Last insert ID:', res.insertId);
-  //   res.json(rows);
-  // });
+    console.log('Last insert ID:', rows.insertId);
+    
+    });
+  }
+   res.render('index',{title:'Bienvenido'});
+
 });
 
 
-//find
+//ejemplo de find 
 app.get('/busqueda',function(req,res,next){
 
   var finduser = { name: 'Pablo', location: 'Santa Cruz' , coche:'Seat Leon'};
   connection.query('SELECT name FROM usuarios WHERE name = ? AND location = ? ', [ 'Pablo', 'Santa Cruz'], function(err,rows){//finduser
     if(err) throw err;
-    console.log('Last insert ID:', res.insertId);
+    console.log('Last insert ID:', rows.insertId);
     console.log("Usuario buscado: "+finduser.name+" con coche " + finduser.coche+ " se mueve por la zona " + finduser.location);
     res.json(rows);
     return next();
@@ -178,36 +160,24 @@ app.get('/busqueda',function(req,res,next){
 
 
 
-//find
-app.get('/buscar_destino',function(req,res,next){
+
+
+
+//buscar destino en index
+app.get('/buscar_destino',function(req,res){
   console.log("Localizacion en buscar destino "+req.query.localitation);
   var findlocalitation = {  location: req.query.localitation };
+  
   connection.query('SELECT * FROM usuarios WHERE location = ? ', [req.query.localitation], function(err,rows){//findestino
     if(err) throw err;
-    console.log("Usuario buscado: "+rows.name+" con coche " + rows.coche+ " se mueve por la zona " + rows.location);
-    res.json(rows);
-    return next();
+    console.log("Longitud de rows"+rows.length)
+    console.log("Usuario buscado: "+rows[0].name+" con coche " + rows[0].coche+ " se mueve por la zona " + rows[0].location);
+    // res.json(rows);
+    // return next();
+  res.send({todo:rows, num_elem: rows.length});
   });
 });
 
-//actualizar
-
-// app.get('/actualizar',function(req,res){
-//   var newlocation = { location : 'Adeje'};
-// connection.query(
-//   'UPDATE usuarios SET location = ? Where ID = ?',
-//   [newlocation, 1],
-//   function (err, result) {
-//     if (err) throw err;
-//
-//     console.log('Changed ' + result.changedRows + ' rows');
-//   });
-// });
-
-
-// http.listen(8080,function(){
-// 	console.log("Connected & Listen to port 8080");
-// });
 
 app.listen(app.get('port'), () => {
     console.log(`Node mysql is running at localhost: ${app.get('port')}` );

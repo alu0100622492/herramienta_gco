@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-  <html>
+  <html lang="es">
     <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
+      <script type="text/javascript" src="./js/botones.js"></script>
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="css/nuevo_css.css" media="screen,projection"></link>
 
@@ -37,39 +38,39 @@
             <div class="row">
               <div class="col s6" id="formulario_inicio">
                 <div class="margen"><!-- div para dar margen-->
-                  <form role="form">
+                  <form role="form"  action="/registro" method="get">
                     <div class="row">
                       <div class="input-field col s12">
           	             <p tabindex="0">Nombre de usuario.</p>
-                         <input role="input" id="name_user" class="name_user" placeholder="su nombre"  type="text" >
+                         <input role="input" id="name_user" class="name_user" placeholder="E.j: Su nombre"  type="text" required>
                       </div>
                     </div>
                     
                     <div class="row">
                       <div class="input-field col s12">
             	           <p tabindex="0">Zona por la que se mueve.</p>
-                         <input role="input" id="destino" placeholder="santa cruz"  type="text" >
+                         <input role="input" id="destino" placeholder="E.j: Santa cruz"  type="text" required>
                       </div>
                     </div>
                     
                     <div class="row">
                       <div class="input-field col s12">
             	           <p tabindex="0">Coche o modelo</p>
-                         <input role="input" id="modelo" placeholder="bmw m3"  type="text" >
+                         <input role="input" id="modelo" placeholder="E.j: bmw m3"  type="text" required>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col s12">
             	           <p tabindex="0">Correo electronico.</p>
-                         <input role="input" id="dest" placeholder="ejemplo@ejemplo.es"  type="text" >
+                         <input role="input" id="correo" placeholder="E.j: ejemplo@ejemplo.es"  type="text" onchange="validar_email();" required>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col s12">
                          <p tabindex="0">Contraseña.</p>
-                         <input role="input" id="dest" placeholder="tu contraseña"  type="text" >
+                         <input role="input" id="dest" placeholder="E.j: Su contraseña"  type="password" required>
                       </div>
                     </div>
 
@@ -78,6 +79,7 @@
                         <button role="button" id="botonEnviar" class="btn waves-effect waves-light" type="submit" tabindex="0" name="action" title="Haga click para registrarse">Registrarse
                           <i class="material-icons right">send</i>
                         </button>
+                        
                       </div>
                     </div>
                   </form>
