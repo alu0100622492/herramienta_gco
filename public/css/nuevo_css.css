@@ -3,6 +3,7 @@ body{
   background-size: 100%;
   margin-left: auto;
   margin-right: auto;
+  background-image: url(http://www.masviajesdigital.com/wp-content/uploads/2016/01/Deporte-extremo-Islas-Canarias-1.jpg);
 
 }
 
@@ -142,15 +143,15 @@ footer.page-footer .footer-copyright {
 }
 #name_user::-webkit-input-placeholder{
   color: #808080;
-} 
+}
 
 #name_user1::-webkit-input-placeholder{
   color: #808080;
-} 
+}
 
 #destino::-webkit-input-placeholder{
   color: #808080;
-} 
+}
 
 #modelo::-webkit-input-placeholder{
   color: #808080;
@@ -240,5 +241,5 @@ footer.page-footer .footer-copyright {
 .logo {
   margin-top: -5%;
   width: 8em;
-  height: 3.5em;
+  height: 2.5em;
 }

@@ -87,7 +87,7 @@ app.get('/consultarbd',function(req,res,next){
     }
     for (var i = 0; i < rows.length; i++) {
       console.log("Usuario : "+rows[i].name+" con coche " + rows[i].coche+ " se mueve por la zona " + rows[i].location);
-      res.jsonp({rows:rows});
+      res.json({rows:rows});
       return next();
      //res.send({rows:rows});
     };
@@ -103,15 +103,15 @@ app.get('/inicio',function(req,res){
   console.log("Localizacion en inicio correo "+req.query.correo);
   console.log("Localizacion en inicio pass "+req.query.pass);
   var nombre = req.query.name;
-  
+
   if(!nombre){
        console.log("El user NO EXISTE IIIFFF else");
-       
+       res.render('registrarse',{title:'Registrese'});
   }else{
        console.log("EN EL ELSE")
        connection.query('SELECT * FROM usuarios WHERE name = ? ', [nombre], function(err,rows){//findestino
                 if(err) throw err;
-    
+
           console.log("Longitud de rows"+rows.length);
                 if(rows.length > 0){
                     console.log("El usuario existe y es"+rows[0].name);
@@ -122,6 +122,7 @@ app.get('/inicio',function(req,res){
                 }
        });
   }
+
 });
 
 
@@ -137,7 +138,7 @@ app.get('/registro',function(req,res,next){
     connection.query('INSERT INTO usuarios SET ?', newuser, function(err,rows){
     if(err) throw err;
     console.log('Last insert ID:', rows.insertId);
-    
+
     });
   }
    res.render('index',{title:'Bienvenido'});
@@ -145,7 +146,7 @@ app.get('/registro',function(req,res,next){
 });
 
 
-//ejemplo de find 
+//ejemplo de find
 app.get('/busqueda',function(req,res,next){
 
   var finduser = { name: 'Pablo', location: 'Santa Cruz' , coche:'Seat Leon'};
@@ -167,7 +168,7 @@ app.get('/busqueda',function(req,res,next){
 app.get('/buscar_destino',function(req,res){
   console.log("Localizacion en buscar destino "+req.query.localitation);
   var findlocalitation = {  location: req.query.localitation };
-  
+
   connection.query('SELECT * FROM usuarios WHERE location = ? ', [req.query.localitation], function(err,rows){//findestino
     if(err) throw err;
     console.log("Longitud de rows"+rows.length)
@@ -180,5 +181,5 @@ app.get('/buscar_destino',function(req,res){
 
 
 app.listen(app.get('port'), () => {
-    console.log(`Node mysql is running at localhost: ${app.get('port')}` );
+    console.log(`Node mysql is running at localhost ${app.get('port')} ` );
 });
