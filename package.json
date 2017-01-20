@@ -20,4 +20,5 @@
     "express-ejs-layouts": "~1.1.0",
     "jquery": "^2.2.3"
   }
+  
 }

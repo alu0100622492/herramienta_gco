@@ -1,6 +1,7 @@
 # Proyecto Final De GCO
 ## Boceto de la herramienta
 
+Para el funcionamiento de esta herramienta, acceda a [cloud9](https://c9.io), una vez dentro, clone el repositorio, para correr el server, lo haremos a través de la terminal con #mysql-ctl cli, en otra terminal, #node mysql.js, una vez hecho esto, en el menu general de c9 pinche en preview & preview running aplication, y ya tendremos las vistas de la herramienta.
 
 
 ### Autor
